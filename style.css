@@ -219,3 +219,232 @@ footer { background: var(--dark-bg); color: #E2E8F0; padding: 4rem 5% 1rem; }
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     z-index: 1000;
 }
+
+/* =========================================
+   ADDITIONS FOR PRODUCTS & CART
+   ========================================= */
+
+/* Filter Buttons */
+.filter-btn {
+    padding: 8px 20px;
+    margin: 0 5px;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    color: var(--text-dark);
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Cart Overlay Styling */
+.cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: none; /* Hidden by default */
+    justify-content: flex-end; /* Slide in from right */
+}
+.cart-overlay.open { display: flex; }
+
+.cart-modal {
+    background: white; width: 400px; max-width: 90%; height: 100%;
+    padding: 2rem; display: flex; flex-direction: column;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.close-cart { font-size: 1.5rem; cursor: pointer; transition: 0.3s; }
+.close-cart:hover { color: #ef4444; }
+
+.cart-items { flex: 1; overflow-y: auto; margin-bottom: 1rem; }
+.cart-footer { border-top: 1px solid #eee; padding-top: 1rem; }
+.total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; }
+
+/* Success Modal */
+.success-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none; align-items: center; justify-content: center; z-index: 2000;
+}
+.success-overlay.active { display: flex; }
+.success-modal { background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 400px; }
+.success-icon { font-size: 4rem; color: var(--success); margin-bottom: 1rem; }
+
+/* --- UPDATED NAVIGATION STYLES --- */
+
+/* 1. Make the container relative so the absolute bar stays inside it */
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 30px; 
+    position: relative; /* Crucial for the sliding bar */
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a { 
+    font-weight: 500; 
+    color: var(--text-dark); 
+    padding: 10px 0; /* Add vertical padding for spacing */
+    position: relative;
+    z-index: 1; /* Keep text above the bar */
+}
+
+/* 2. The Sliding Bar (Magic Line) */
+.nav-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.4s ease-in-out; /* The Smooth Transition */
+    width: 0; /* Starts at 0, JS will set the width */
+}
+
+/* Optional: Color change on hover/active */
+.nav-links a:hover, 
+.nav-links a.active { 
+    color: var(--primary-color); 
+}
+
+/* Exit Button (Always Visible) */
+.admin-logout-trigger {
+    display: flex; /* Always show it */
+    align-items: center;
+    color: #ef4444; 
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 20px;
+    border: 1px solid #ef4444;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.admin-logout-trigger:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.admin-logout-trigger span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+/* Fade In Animation for Filtered Products */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================= */
+
+/* Tablet & Mobile (Screens smaller than 1024px) */
+@media (max-width: 1024px) {
+    .hero { height: 50vh; }
+    .hero-content h1 { font-size: 2.5rem; }
+    
+    /* Landing Page Split - Stack Vertically */
+    .split-screen { flex-direction: column; }
+    .split-pane { padding: 3rem 1rem; }
+    .role-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .role-title { font-size: 1.8rem; }
+}
+
+/* Mobile Devices (Screens smaller than 768px) */
+@media (max-width: 768px) {
+    
+    /* 1. Navigation Bar - Compact Layout */
+    .navbar {
+        flex-wrap: wrap;
+        padding: 1rem 5%;
+        gap: 15px;
+        justify-content: center;
+    }
+    .logo { width: 100%; justify-content: center; margin-bottom: 10px; }
+    .nav-links { 
+        gap: 20px; 
+        font-size: 0.9rem; 
+        width: 100%; 
+        justify-content: center; 
+    }
+    
+    /* Hide the Magic Line on mobile if it acts weird */
+    .nav-indicator { display: none; }
+
+    /* 2. Hero Section */
+    .hero { text-align: center; height: auto; padding: 4rem 1rem; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+
+    /* 3. Product Grid */
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 column on phone */
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    /* 4. Filter Buttons */
+    .filter-section {
+        display: flex;
+        overflow-x: auto; /* Scroll horizontally if many buttons */
+        padding-bottom: 10px;
+        white-space: nowrap;
+        justify-content: flex-start;
+    }
+    .filter-btn { flex-shrink: 0; }
+
+    /* 5. Cart Modal - Full Width */
+    .cart-modal { width: 100%; max-width: 100%; }
+
+    /* 6. Admin Dashboard - Mobile View */
+    .admin-body { flex-direction: column; }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0;
+    }
+    .sidebar-header, .sidebar-footer { display: none; } /* Save space */
+    .sidebar-menu { 
+        display: flex; 
+        margin: 0; 
+        width: 100%;
+    }
+    .sidebar-menu li a {
+        flex-direction: column;
+        font-size: 0.7rem;
+        padding: 10px;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    .admin-content { margin-left: 0; padding: 1rem; }
+    
+    .admin-topbar { flex-direction: column; gap: 15px; align-items: stretch; }
+    .search-bar { width: 100%; }
+    
+    .stats-grid { grid-template-columns: 1fr; }
+    
+    /* Make Table Scrollable */
+    .recent-orders { overflow-x: auto; }
+    .order-table { min-width: 600px; } /* Force width so it scrolls */
+}

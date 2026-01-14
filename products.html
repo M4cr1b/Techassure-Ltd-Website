@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Techassure Ltd</title>
+    <title>Products - Techassure Ltd</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -15,13 +15,11 @@
                 <i class="fa-solid fa-microchip"></i> Techassure Ltd.
             </div>
         </a>
-        
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li> 
+            <li><a href="products.html">Products</a></li>
             <li><a href="contact.html">Support</a></li>
         </ul>
-
         <div style="display: flex; align-items: center;">
     <div class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -35,13 +33,22 @@
 </div>
     </nav>
 
-    <header class="hero">
-        <div class="container hero-content">
-            <h1>Upgrade Your Tech.<br>Elevate Your Life.</h1>
-            <p>From the latest smartphones to high-performance laptops.<br>Quality electronics delivered to your doorstep.</p>
-            <a href="products.html"><button class="btn-primary">Shop Now <i class="fa-solid fa-arrow-right"></i></button></a>
-        </div>
-    </header>
+    <section class="page-header" style="background: var(--dark-bg); color: white; padding: 4rem 5%; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Our Inventory</h2>
+        <p style="opacity: 0.8;">Authentic gadgets with warranty.</p>
+    </section>
+
+    <section class="filter-section" style="padding: 2rem 5%; text-align: center;">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Phones</button>
+        <button class="filter-btn">Laptops</button>
+        <button class="filter-btn">Accessories</button>
+    </section>
+
+    <section class="products-section">
+        <div class="product-grid" id="product-list">
+            </div>
+    </section>
 
     <footer>
         <div class="footer-content">
@@ -62,9 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 Techassure Ltd. All rights reserved. | Consumer Electronics Retail
-        </div>
+        <div class="copyright">&copy; 2026 Techassure Ltd. All rights reserved.</div>
     </footer>
 
     <div class="cart-overlay" id="cart-overlay">

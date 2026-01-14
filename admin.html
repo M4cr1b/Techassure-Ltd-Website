@@ -102,9 +102,31 @@
                 </tbody>
             </table>
         </section>
+        <div class="success-overlay" id="status-modal" style="display: none; align-items: center; justify-content: center;">
+        <div class="success-modal" style="text-align: left; max-width: 400px; width: 90%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">Update Order Status</h3>
+                <i class="fa-solid fa-xmark" onclick="closeStatusModal()" style="cursor: pointer; font-size: 1.2rem;"></i>
+            </div>
+            
+            <p style="color: #64748B; margin-bottom: 15px;">Change status for Order <strong id="modal-order-id">#---</strong></p>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-size: 0.9rem; margin-bottom: 5px; font-weight: 500;">Select New Status:</label>
+                <select id="new-status-select" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    <option value="Pending">Pending</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Ready for Pickup">Ready for Pickup</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
 
+            <button id="save-status-btn" class="btn-primary" style="width: 100%;">Save Changes</button>
+        </div>
+    </div>
     </main>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
